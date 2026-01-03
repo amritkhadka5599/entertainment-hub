@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entertainment Hub Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Entertainment Hub Pro</h1>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search movies, anime, games, music...">
+      <button id="searchBtn">Search</button>
+      <ul id="suggestions" class="suggestions-list"></ul>
+    </div>
+    <div class="filters">
+      <label>Minimum Rating: <input type="number" id="minRating" min="0" max="10" step="0.1"></label>
+      <label>Release Year: <input type="number" id="releaseYear" min="1900" max="2030"></label>
+    </div>
+  </header>
+
+  <nav>
+    <button class="tab-btn active" data-tab="movies">Movies / Web Series</button>
+    <button class="tab-btn" data-tab="anime">Anime</button>
+    <button class="tab-btn" data-tab="games">Games</button>
+    <button class="tab-btn" data-tab="music">Music</button>
+  </nav>
+
+  <main>
+    <section id="movies" class="tab-content active"></section>
+    <section id="anime" class="tab-content"></section>
+    <section id="games" class="tab-content"></section>
+    <section id="music" class="tab-content"></section>
+  </main>
+  <div id="detailsModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="detailsImg" src="" alt="Poster" class="details-img">
+    <div class="details-info">
+      <h2 id="detailsTitle"></h2>
+      <p id="detailsPlot"></p>
+      <p><strong>Rating:</strong> <span id="detailsRating"></span></p>
+      <p><strong>Release Date:</strong> <span id="detailsReleaseDate"></span></p>
+      <p><strong>Cast / Artist:</strong> <span id="detailsCast"></span></p>
+      <p><strong>Genre:</strong> <span id="detailsGenre"></span></p>
+      <p><strong>Runtime:</strong> <span id="detailsRuntime"></span></p>
+      <button id="trailerBtn">Watch Trailer</button>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
