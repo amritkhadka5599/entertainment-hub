@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Pagal Ho? ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(180deg, #ff5f8f, #ff9aa2);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+
+.page {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+button {
+    width: 80%;
+    padding: 18px;
+    font-size: 20px;
+    border-radius: 40px;
+    border: none;
+    background: white;
+    color: #ff4d6d;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+/* Floating hearts */
+.floating {
+    position: absolute;
+    bottom: -20px;
+    font-size: 22px;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page" id="page1">
+    <h1 id="type1"></h1>
+    <div class="buttons">
+        <button onclick="run(this)">YES </button>
+        <button onclick="run(this)">YES </button>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2" style="display:none;">
+    <h1 id="type2"></h1>
+</div>
+
+<script>
+// Typewriter page 1
+const text1 = "tum pagal ho? ❤️";
+let i = 0;
+function typePage1() {
+    if (i < text1.length) {
+        document.getElementById("type1").innerHTML += text1[i++];
+        setTimeout(typePage1, 90);
+    }
+}
+typePage1();
+
+// Button runs on tap
+function run(btn) {
+    btn.style.transform =
+        `translate(${Math.random()*40-20}px, ${Math.random()*40-20}px)`;
+    setTimeout(nextPage, 300);
+}
+
+// Next page
+function nextPage() {
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+
+    const text2 = "to mujh se kyu baat nahi karti 💔";
+    let j = 0;
+    function typePage2() {
+        if (j < text2.length) {
+            document.getElementById("type2").innerHTML += text2[j++];
+            setTimeout(typePage2, 90);
+        }
+    }
+    typePage2();
+}
+
+// Floating hearts
+setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "floating";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 7000);
+}, 500);
+
+// Music start on first touch
+document.body.addEventListener("touchstart", () => {
+    document.getElementById("music").play();
+}, { once: true });
+</script>
+
+</body>
+</html>
